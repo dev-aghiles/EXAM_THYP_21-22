@@ -47,23 +47,3 @@ news:reference a rdf:Property ;
     rdfs:label "reference" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
-
-news:nbrpersonne a rdf:Property ;
-    rdfs:label "nombre personne" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-news:child a rdf:Property ;
-    rdfs:label "child" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-news:adult a rdf:Property ;
-    rdfs:label "adult" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-news:plusde50 a rdf:Property ;
-    rdfs:label "plusde50" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
