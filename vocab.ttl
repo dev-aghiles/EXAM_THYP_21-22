@@ -29,7 +29,7 @@ news:Article a rdfs:Class ;
     rdfs:label "Article" ;
     vs:term_status "experimental" .
 
-news: title a rdfs:Property ;
+news:title a rdfs:Property ;
     rdfs:label "titre" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
