@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Examen THYP 21-22</title>
+    <script src="https://use.fontawesome.com/2ddc4a0f9c.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+  </head>
+  <style>
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-image: url("img.png");
+}
+.mb-12{
+    margin-bottom: 15px;
+}
+h4{
+    text-align: center;
+    padding: 20px;
+    font-weight: 600;
+    color: darkslateblue;
+}
+h5{
+    color:crimson;
+    font-style: oblique;
+    font-weight: bold;
+}
+h6{
+    margin: 8px auto;
+    font-style: italic;
+color:darkblue
+}
+.card{
+    background-color:lightblue;
+    min-height: 320px;
+}
+.card-body{
+    padding: 2px 5px;
+}
+.center{
+    margin: 8px auto;
+}
+
+</style>
+  <body>
+   <body>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3 id="title" style="text-align: center;">Liste de tout les items</h3>
+            </div>
+            <div class="col-md-6">
+                <select class="custom-select" id="subjects">
+                    <option value=""></option>
+                </select>
+            </div>
+           
+            <div id="items-col-2" class="row">
+                
+            </div>
+         
+        </div>
+    </div>
+  </div>
+  </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://d3js.org/d3.v6.min.js"></script>
+<script>
+    let dataItems = [];
+    getData = (url) => {
+      return $.ajax({
+        type: 'GET',
+        url : url,
+        crossDomain: true
+       });  
+    }
+
+    showSujets = (url) => {
+      let subjects = [];
+      getData(url).then((data) => {  
+            try {
+                dataItems = data
+                subjects = data.map(value => value["dcterms:subject"][0]["@value"]);
+                subjects = new Set(subjects);
+                options = `<option value="All">Tout</option>`
+                subjects.forEach( el => {
+                    options += `<option value="${el}">${el}</option>`
+                })
+                $('#subjects').html(options);
+            } catch (error) {
+                console.log(error);
+            }
+        })     
+    }
+    showFiltreItems = () => {
+      if ($('#subjects').val() !== "All") {
+        $('#title').html(`liste des items de ${$('#subjects').val()}`)
+        let items = dataItems.filter(function (el) {
+          return el["dcterms:subject"][0]["@value"] == $('#subjects').val();
+        });
+        showItems(items);
+        return;
+      } 
+      $('#title').html(`liste de tout les items`)
+      showItems(dataItems);
+    }
+
+    showItems = (data) => {
+        $('#items-col-2').html('')
+        card = d3.select('#items-col-2').selectAll(".row").data(data).enter()
+            .append('div').attr('class', 'col-sm-4 mb-12 margin-bottom-xl')
+            .append("div").attr('class', 'card');
+                               
+            card.append('img')
+                .attr('id', el => `img-${el["o:id"]}`)
+                .attr('class', 'card-header')
+                .attr('src', el => {
+                    getData(el["o:media"][0]["@id"]).then((res) => {
+                        d3.select(`#img-${el["o:id"]}`).attr("src", res["o:source"]);
+                    })
+                });
+            card.append('div').attr('class', 'card-body')
+                .append('label')
+                   .attr('class', 'text-success text-center')
+                   .text(el =>  `l'identifiant : ${el["o:id"]}`)
+                .append('label')
+                   .attr('class', 'text-dark text-left text-justify')
+                   .text(el => `Le titre :${el["o:title"]}`)
+            ;
+    }
+    $(document).ready( function () {
+       const url_items2 = "https://polemika.univ-paris8.fr/omk/api/items?item_set_id=2";
+        getData(url_items2).then((data) => {  
+            try {
+                showItems(data)
+                showSujets(url_items2);
+            } catch (error) {
+                console.log(error);
+            }
+        })
+        
+        $('#subjects').on('change', function() {
+            showFiltreItems()
+        });
+    });
+</script>
+</html>
