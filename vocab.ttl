@@ -9,35 +9,11 @@
 @prefix teach: <http://linkedscience.org/teach/ns#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix schema: <http://schema.org/>.
-@prefix news: <https://dev-aghiles.github.io/Examen-THYP/vocab.ttl#> .
+@prefix news: <https://dev-aghiles.github.io/EXAM_THYP_21-22/vocab.ttl#> .
 
 
-<https://dev-aghiles.github.io/Examen-THYP/vocab.ttl> a owl:Ontology ;
+<https://dev-aghiles.github.io/EXAM_THYP_21-22/vocab.ttl> a owl:Ontology ;
 
-dcterms:title "News Evaluation" .
-
-# évaluer des news
-
-# vocabularies.
-
-
-news:NewsArticle a rdfs:Class ;
-    rdfs:label "news" ;
-
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
-@prefix o: <http://omeka.org/s/vocabs/o#> .
-@prefix student: <https://duraspace.org/wp-content/uploads/2020/02/vivo.owl#Student> .
-@prefix teach: <http://linkedscience.org/teach/ns#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-@prefix schema: <http://schema.org/>.
-@prefix news: <https://dev-aghiles.github.io/Examen-THYP/vocab.ttl#> .
-
-
-<https://dev-aghiles.github.io/Examen-THYP/vocab.ttl> a owl:Ontology ;
 
 dcterms:title "News Evaluation" .
 
@@ -85,41 +61,3 @@ news:evenement a rdfs:Property ;
     rdfs:label "evenement" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
-
-
-    vs:term_status "experimental" .
-
-news:Article a rdfs:Class ;
-    rdfs:label "Article" ;
-    vs:term_status "experimental" .
-
-news:title a rdfs:Property ;
-    rdfs:label "titre" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-news:subTitle a rdfs:Property ;
-    rdfs:label "sous titre" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-news:text a rdfs:Property ;
-    rdfs:label "texte" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-news:autor a rdfs:Property ;
-    rdfs:label "auteur" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-news:datePublication a rdfs:Property ;
-    rdfs:label "date de publication" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
-news:evenement a rdfs:Property ;
-    rdfs:label "evenement" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
-
