@@ -23,37 +23,37 @@ news:Article a rdfs:Class ;
     rdfs:label "Article" ;
     vs:term_status "experimental" .
 
-NewsArticle:title a rdfs:Property ;
+news: NewsArticle:title a rdfs:Property ;
     rdfs:label "titre" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-NewsArticle:subTitle a rdfs:Property ;
+news: NewsArticle:subTitle a rdfs:Property ;
     rdfs:label "sous titre" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-NewsArticle:text a rdfs:Property ;
+news:NewsArticle:text a rdfs:Property ;
     rdfs:label "texte" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-Article:autor a rdfs:Property ;
+news:Article:autor a rdfs:Property ;
     rdfs:label "auteur" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-Article:datePublication a rdfs:Property ;
+news:Article:datePublication a rdfs:Property ;
     rdfs:label "date de publication" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-NewsArticle:evenement a rdfs:Property ;
+news:NewsArticle:evenement a rdfs:Property ;
     rdfs:label "evenement" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-news:hasNews a rdf:Property ;
+news:news:hasNews a rdf:Property ;
     rdfs:label "hasNews" ;
     rdfs:comment "si c'est un news" ;
     rdfs:domain o:Resource ; .
